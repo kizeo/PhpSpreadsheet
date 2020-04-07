@@ -1272,7 +1272,7 @@ class Xlsx extends BaseReader
                             }
 
                             $this->readFormControlProperties($excel, $zip, $dir, $fileWorksheet, $docSheet, $unparsedLoadedData);
-                            $this->readPrinterSettings($excel, $zip, $dir, $fileWorksheet, $docSheet, $unparsedLoadedData);
+                            // $this->readPrinterSettings($excel, $zip, $dir, $fileWorksheet, $docSheet, $unparsedLoadedData);
 
                             // Loop through definedNames
                             if ($xmlWorkbook->definedNames) {
