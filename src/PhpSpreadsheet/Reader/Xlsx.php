@@ -1531,7 +1531,7 @@ class Xlsx extends BaseReader
             }
         }
 
-        $excel->setUnparsedLoadedData($unparsedLoadedData);
+        // $excel->setUnparsedLoadedData($unparsedLoadedData);
 
         $zip->close();
 
