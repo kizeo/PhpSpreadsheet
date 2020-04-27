@@ -1133,10 +1133,14 @@ class Chart extends WriterPart
             $plotSeriesValues = $plotGroup->getPlotValuesByIndex($plotSeriesRef);
 
             if (($groupType == DataSeries::TYPE_PIECHART) || ($groupType == DataSeries::TYPE_PIECHART_3D) || ($groupType == DataSeries::TYPE_DONUTCHART)) {
-                $fillColorValues = $plotSeriesValues->getFillColor();
-                if ($fillColorValues !== null && is_array($fillColorValues)) {
-                    foreach ($plotSeriesValues->getDataValues() as $dataKey => $dataValue) {
-                        $this->writePlotSeriesValuesElement($objWriter, $dataKey, ($fillColorValues[$dataKey] ?? 'FF9900'));
+                if ($plotSeriesValues) {
+                    $fillColorValues = $plotSeriesValues->getFillColor();
+                    if ($fillColorValues !== null && is_array($fillColorValues)) {
+                        foreach ($plotSeriesValues->getDataValues() as $dataKey => $dataValue) {
+                            $this->writePlotSeriesValuesElement($objWriter, $dataKey, ($fillColorValues[$dataKey] ?? 'FF9900'));
+                        }
+                    } else {
+                        $this->writePlotSeriesValuesElement($objWriter);
                     }
                 } else {
                     $this->writePlotSeriesValuesElement($objWriter);
