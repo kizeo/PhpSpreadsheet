@@ -196,8 +196,12 @@ class ContentTypes extends WriterPart
     {
         if (File::fileExists($pFile)) {
             $image = getimagesize($pFile);
-
-            return image_type_to_mime_type($image[2]);
+            if ($image !== false) {
+                return image_type_to_mime_type($image[2]);
+            } else {
+                $ext = pathinfo($pFile, PATHINFO_EXTENSION);
+                return "image/" . $ext;
+            }
         }
 
         throw new WriterException("File $pFile does not exist");
